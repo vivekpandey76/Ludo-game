@@ -1,5 +1,8 @@
 console.log("Vivek pandey");
 const btn=document.getElementById("Btn");
+const result=document.getElementById("Result")
+let score1=document.getElementById("score1");
+let score2=document.getElementById("score2");
 
 btn.addEventListener('click',function(){
     const player1=Math.floor(Math.random()*6)+1;  //Generating random number from 1 to 6 
@@ -8,12 +11,36 @@ btn.addEventListener('click',function(){
     const player2=Math.floor(Math.random()*6)+1;
     const player2Dice=`dice${player2}.png`;
     document.getElementById("img2").setAttribute('src',player2Dice);
-    const result=document.getElementById('Result');
-    if(player1==player2){
-            result.innerText="DRAW!"
-    }else if(player1>player2){
+    let result1=parseInt(score1.value);        //Converting string to decimal by using parseInt
+    score=player1+result1;
+    score1.setAttribute('value',`${score}`);
+    let result2=parseInt(score2.value);        //Converting string to decimal by using parseInt
+    score4=player2+result2;
+    score2.setAttribute('value',`${score4}`);
+    console.log(score1.value);
+    console.log(score2.value);
+        if(score1.value>=10){
             result.innerText="Player1 Won!"
-    }else{
-        result.innerText="Player2 Won!"
-    }
+            score1.value="0";
+            score2.value="0";
+            setTimeout(() => {
+                alert("Player1 Won!Refresh the page and keep playing");
+            }, 1000);
+            
+        }else if(score2.value>=10){
+            result.innerText="Player2 Won!"
+            score1.value="0"
+            score2.value="0"
+            setTimeout(() => {
+                alert("Player2 Won!Refresh the page and keep playing");
+            }, 1000);
+            
+        }else if(score1.value==10 & score2.value==10){
+            result.innerText="Draw!"
+            score1.value="0"
+            score2.value="0"
+            setTimeout(() => {
+                alert("Match Draw!Refresh the page and keep playing");
+            }, 1000);
+        }
 });
