@@ -7,7 +7,7 @@ let score2=document.getElementById("score2");
 btn.addEventListener('click',function(){
     const player1=Math.floor(Math.random()*6)+1;  //Generating random number from 1 to 6 
     const player1Dice=`dice${player1}.png`;        
-    document.getElementById("img1").setAttribute('src',player1Dice);
+    document.getElementById("img1").setAttribute('src',player1Dice);  
     const player2=Math.floor(Math.random()*6)+1;
     const player2Dice=`dice${player2}.png`;
     document.getElementById("img2").setAttribute('src',player2Dice);
@@ -19,28 +19,24 @@ btn.addEventListener('click',function(){
     score2.setAttribute('value',`${score4}`);
     console.log(score1.value);
     console.log(score2.value);
-        if(score1.value>=10){
+        if(score1.value>=100){
             result.innerText="Player1 Won!"
-            score1.value="0";
-            score2.value="0";
-            setTimeout(() => {
-                alert("Player1 Won!Refresh the page and keep playing");
-            }, 1000);
-            
-        }else if(score2.value>=10){
+            btn.innerText="Play Again";
+            btn.addEventListener('click',function(){
+                location.reload();
+            })   
+        }else if(score2.value>=100){
             result.innerText="Player2 Won!"
-            score1.value="0"
-            score2.value="0"
-            setTimeout(() => {
-                alert("Player2 Won!Refresh the page and keep playing");
-            }, 1000);
-            
-        }else if(score1.value==10 & score2.value==10){
+            btn.innerText="Play Again"
+            btn.addEventListener('click',function(){
+                location.reload();
+            })
+        }else if(score1.value==100 & score2.value==100){
             result.innerText="Draw!"
-            score1.value="0"
-            score2.value="0"
-            setTimeout(() => {
-                alert("Match Draw!Refresh the page and keep playing");
-            }, 1000);
+            btn.innerText="Play Again";
+            btn.addEventListener('click',function(){
+                location.reload();
+            })
         }
+        
 });
